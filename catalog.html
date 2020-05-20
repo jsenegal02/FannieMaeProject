@@ -1,0 +1,80 @@
+<html>
+<body>
+
+<script type="text/javascript" language="javascript">
+
+function search()
+{
+    var first = document.getElementById("fn").value;
+    var last = document.getElementById("ln").value;
+
+ItemJSON= {"first_name":first, "last_name":last};
+  var URL = "http://localhost:8080/search"; 
+
+  var http = new XMLHttpRequest();
+
+  http.onreadystatechange = function() {
+    if (this.status == 200)
+     {
+    document.getElementById("demo").innerHTML = this.responseText; 
+       }
+    };
+    http.open("POST", URL, true);
+
+http.setRequestHeader("Content-type","application/json");
+
+  http.send(JSON.stringify(ItemJSON));
+    
+};
+
+function addStudent(){
+    
+    var first_name = document.getElementById("S").value;
+    var last_name = document.getElementById("NP").value;
+    var classification = document.getElementById("ID").value;
+    var major = document.getElementById("OP").value;  
+
+  var ItemJSON = {"First Name": Server, "NewPasswd": NewPasswd,
+                  "UserID": UserID, "OldPasswd": OldPasswd};
+
+}
+</script>
+
+<form action="/SearchTeacherByFirst" method="POST">
+    <input type="text" placeholder="ENTER TEACHER FIRST NAME" name="Tfirst_name" >
+    <br>
+    <button type="submit" >Search</button>
+</form>
+
+<form action="/SearchTeacherByLast" method="POST">
+    <input type="text" placeholder="ENTER TEACHER LAST NAME" name="Tlast_name">
+    <br>
+    <button type="submit" >Search</button>
+</form>
+
+<form action="/SearchStudentByFirst" method="POST">
+    <input type="text" placeholder="ENTER STUDENT FIRST NAME" name="Sfirst_name" >
+    <br>
+    <button type="submit" >Search</button>
+</form>
+
+<form action="/SearchStudentByLast" method="POST">
+    <input type="text" placeholder="ENTER STUDENT LAST NAME" name="Slast_name">
+    <br>
+    <button type="submit" >Search</button>
+</form>
+
+<form action="/PrintAllStudents" method="POST">
+    <br>
+    <p>Print All Students</p>
+    <button type="submit" >Print</button>
+</form>
+
+<form action="/PrintAllTeachers" method="POST">
+    <br>
+    <p>Print All Teaachers</p>
+    <button type="submit" >Print </button>
+</form>
+
+</body>
+</html>
